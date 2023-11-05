@@ -165,11 +165,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const pinError = document.getElementById("pinError");
     if (pincode.value === "") {
       pinError.textContent = "";
+      pinError.style.display = "none";
     } else if (!pinRegex.test(pincode.value)) {
       pinError.textContent = "Pincode is 6 digits and cannot start with 0";
-      pinError.style.color = "red";
+      pinError.style.display = "block";
     } else {
       pinError.textContent = "";
+      pinError.style.display = "none";
     }
   });
 
@@ -178,11 +180,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const phoneNumError = document.getElementById("phoneNumError");
     if (phoneNumber.value === "") {
       phoneNumError.textContent = "";
+      phoneNumError.style.display = "none";
     } else if (!indianMobileNumberRegex.test(phoneNumber.value)) {
       phoneNumError.textContent = "Enter a valid indian mobile number";
-      phoneNumError.style.color = "red";
+      phoneNumError.style.display = "block";
     } else {
       phoneNumError.textContent = "";
+      phoneNumError.style.display = "none";
     }
   });
 
@@ -191,11 +195,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const emailError = document.getElementById("emailError");
     if (email.value === "") {
       emailError.textContent = "";
+      emailError.style.display = "none";
     } else if (!emailRegex.test(email.value)) {
       emailError.textContent = "Enter a valid email";
-      emailError.style.color = "red";
+      emailError.style.display = "block";
     } else {
       emailError.textContent = "";
+      emailError.style.display = "none";
     }
   });
 
@@ -204,11 +210,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const emgContactNumError = document.getElementById("emgContactNumError");
     if (emgContantNum.value === "") {
       emgContactNumError.textContent = "";
+      emgContactNumError.style.display = "none";
     } else if (!indianMobileNumberRegex.test(emgContantNum.value)) {
       emgContactNumError.textContent = "Enter a valid indian mobile number";
-      emgContactNumError.style.color = "red";
+      emgContactNumError.style.display = "block";
     } else {
       emgContactNumError.textContent = "";
+      emgContactNumError.style.display = "none";
     }
   });
 
@@ -217,11 +225,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const adhaarNoError = document.getElementById("adhaarNoError");
     if (aadhaarNo.value === "") {
       adhaarNoError.textContent = "";
+      adhaarNoError.style.display = "none";
     } else if (!aadhaarNoRegex.test(aadhaarNo.value)) {
       adhaarNoError.textContent = "Enter a valid aadhaar number";
-      adhaarNoError.style.color = "red";
+      adhaarNoError.style.display = "block";
     } else {
       adhaarNoError.textContent = "";
+      adhaarNoError.style.display = "none";
     }
   });
 
@@ -230,11 +240,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     const panNoError = document.getElementById("panNoError");
     if (panNo.value === "") {
       panNoError.textContent = "";
+      panNoError.style.display = "none";
     } else if (!panNoRegex.test(panNo.value)) {
       panNoError.textContent = "Enter a valid pan number";
-      panNoError.style.color = "red";
+      panNoError.style.display = "block";
     } else {
       panNoError.textContent = "";
+      panNoError.style.display = "none";
     }
   });
 });

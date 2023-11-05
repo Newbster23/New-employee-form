@@ -51,46 +51,70 @@ body {
 
 .input-container {
   display: flex;
-  align-items: center;
   flex-direction: row;
+  align-items: center;
 }
 
-.input-container label {
+.input-column {
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+}
+
+.input-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-validation-error-message {
+  flex: 1;
+  color: red;
+}
+
+.input-container label,
+.input-column label {
   flex: 1;
   font-family: "Arial";
   font-style: normal;
   font-weight: 300;
   font-size: 1rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: black;
-  text-align: left;
 }
 
 .input-container input,
-.input-container select {
+.input-column input,
+.input-field input,
+.input-container select,
+.input-column select {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  width: 50%;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-right: 1rem;
 }
 
+.address-input {
+  width: 100%;
+}
+
 .doc-container {
   margin-bottom: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: left;
+  display: block;
 }
 
 .doc-container label {
   display: block;
-  margin-bottom: 5px;
-  max-width: 35rem;
-  min-width: 35rem;
+  margin-bottom: 9px;
+  max-width: fit-content;
+  min-width: fit-content;
 }
 
 .add-button {
@@ -127,6 +151,7 @@ input[type="file"]::file-selector-button {
   border: 1px solid rgba(0, 0, 0, 0.16);
   margin-left: 3rem;
   transition: background-color 200ms;
+  margin-bottom: 10px;
 }
 
 /* file upload button hover state */
@@ -142,7 +167,6 @@ input[type="file"]::file-selector-button:active {
 .required-field::after {
   content: "*";
   color: red;
-  margin-left: 4px;
 }
 
 /* style for error in input field */
@@ -153,13 +177,6 @@ input[type="file"]::file-selector-button:active {
 /* style for error message */
 .error-message {
   color: #ff0000 !important;
-}
-
-.error-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 }
 
 /* Style for success popup */
@@ -234,4 +251,51 @@ input[type="file"]::file-selector-button:active {
 .note {
   color: #f80a0a;
   font-style: italic;
+}
+
+/* CSS for Mobile Screens (Up to 600px) */
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 85%; /* Adjust the width for smaller screens */
+  }
+
+  .header-container {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 30%;
+    height: 50%;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    width: 100%;
+  }
+
+  .input-column {
+    width: 100%;
+  }
+
+  .input-container label,
+  .input-container input,
+  .input-container select,
+  .input-column label,
+  .input-column input,
+  .input-column select,
+  .input-field input {
+    margin-bottom: 1rem;
+  }
+
+  .submit-button {
+    text-align: center;
+  }
+  .fileInput {
+    width: 100%;
+  }
+  .file-label {
+    font-size: 14px;
+  }
 }
