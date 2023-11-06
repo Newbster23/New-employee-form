@@ -275,7 +275,6 @@ function checkDocFileName(fileInputId, fileInput, fileErr) {
     for (const key in DocName) {
       if (DocName[key] === fileInputId.toLowerCase()) {
         matchedValue = DocName[key];
-        console.log(matchedValue);
         if(Object.keys(valueMapping).includes(matchedValue) ) {
           matchedValue = valueMapping[matchedValue];
         }
@@ -287,6 +286,22 @@ function checkDocFileName(fileInputId, fileInput, fileErr) {
     this.value = "";
   }
 }
+// Function to check file size
+function checkFileSize(fileInputId, fileInput, fileErr) {
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    const fileSizeInBytes = file.size;
+    const fileSizeInMB = fileSizeInBytes / (1024 * 1024); // Convert to MB
+    fileErr.textContent = "";
+    checkDocFileName(fileInputId, fileInput, fileErr);
+    if (fileSizeInMB > 2) {
+      fileErr.textContent = "File size exceeds 2 MB. Please choose a smaller file.";
+      fileErr.style.color = "red";
+      fileInput.value = '';
+    }
+  }
+}
+
 
 // Function to check the file type of the documents.
 function checkDocFileType(fileInputId, fileErrId) {
@@ -300,7 +315,7 @@ function checkDocFileType(fileInputId, fileErrId) {
       .toLowerCase();
     if (allowedFileTypes.includes(selectedFileType)) {
       fileErr.textContent = "";
-      checkDocFileName(fileInputId, fileInput, fileErr);
+      checkFileSize(fileInputId, fileInput, fileErr);
     } else {
       fileErr.textContent =
         "File type is not allowed. Please select a pdf file";

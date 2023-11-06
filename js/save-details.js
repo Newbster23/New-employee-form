@@ -11,7 +11,9 @@ dbconfig.connect((err) => {
   }
 });
 
-const beginTransaction = util.promisify(dbconfig.beginTransaction).bind(dbconfig);
+const beginTransaction = util
+  .promisify(dbconfig.beginTransaction)
+  .bind(dbconfig);
 const commit = util.promisify(dbconfig.commit).bind(dbconfig);
 const rollback = util.promisify(dbconfig.rollback).bind(dbconfig);
 
@@ -79,15 +81,24 @@ async function saveDataToDatabase(req, res) {
       pan_no,
     ];
 
-    const personal_details_result = await util.promisify(dbconfig.query).bind(dbconfig)(personal_details_query, personal_details_values);
+
+    const personal_details_result = await util
+      .promisify(dbconfig.query)
+      .bind(dbconfig)(personal_details_query, personal_details_values);
     if (personal_details_result.affectedRows === 1) {
       const person_id = personal_details_result.insertId;
       // Insert data into qualification_details table
       // Check if degree is an array (multiple qualifications)
       if (Array.isArray(degree)) {
-        var qualification_details_multipleValues = degree.map((degree, index) => [
-          person_id, degree, university[index], year[index], percentage[index]
-        ]);
+        var qualification_details_multipleValues = degree.map(
+          (degree, index) => [
+            person_id,
+            degree,
+            university[index],
+            year[index],
+            percentage[index],
+          ]
+        );
 
         var qualification_details_values = [].concat(
           ...qualification_details_multipleValues
@@ -108,14 +119,24 @@ async function saveDataToDatabase(req, res) {
           "INSERT INTO qualification_details (PERSON_ID, DEGREE, UNIVERSITY, YEAR_OF_PASSING, PERCENTAGE) VALUES (?, ?, ?, ?, ?)";
       }
 
-      await insertData(qualification_details_query, qualification_details_values);
+      await insertData(
+        qualification_details_query,
+        qualification_details_values
+      );
 
       // Insert data into professional_details table
       // Check if org name is an array (multiple experience)
       if (Array.isArray(org_name)) {
-        var professional_details_multipleValues = org_name.map((org_name, index) => [
-          person_id, org_name, position[index], from_date[index], to_date[index], last_drawn_salary[index]
-        ]);
+        var professional_details_multipleValues = org_name.map(
+          (org_name, index) => [
+            person_id,
+            org_name,
+            position[index],
+            from_date[index],
+            to_date[index],
+            last_drawn_salary[index],
+          ]
+        );
 
         var professional_details_values = [].concat(
           ...professional_details_multipleValues
