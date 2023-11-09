@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (select.options[select.selectedIndex].value === "") {
           select.classList.add("error-input");
           document.getElementById("InfoError").textContent =
-            "Please fill all the mandatory fields and upload all the reqired documents.";
+            "Please fill all the mandatory fields and upload all the required documents.";
         } else {
           select.classList.remove("error-input");
         }
